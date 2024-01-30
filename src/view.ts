@@ -12,8 +12,8 @@ export default class CRNView extends ItemView {
 
   constructor(leaf: WorkspaceLeaf, settingsStore: SettingsStore, tagMenuStore: TagMenuStore) {
     super(leaf);
-    this.settingsStore = settingsStore
-    this.tagMenuStore = tagMenuStore
+    this.settingsStore = settingsStore;
+    this.tagMenuStore = tagMenuStore;
   }
 
   getViewType(): string {
@@ -30,7 +30,7 @@ export default class CRNView extends ItemView {
 
   getEphemeralState(): any {
     const state = get(this.tagMenuStore)
-    
+
     return {
       selectedTags: state.selectedTags,
       expandedGroups: state.expandedGroups
@@ -68,10 +68,6 @@ export default class CRNView extends ItemView {
       this.unsubscribe()
     }
 
-    this.unsubscribe = this.tagMenuStore.subscribe(_ => {
-      this.app.workspace.requestSaveHistory()
-    })
-
     return Promise.resolve()
-  }  
+  }
 }
